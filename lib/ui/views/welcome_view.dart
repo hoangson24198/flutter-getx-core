@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:icomax/helpers/theme.dart';
 
-import 'Widgets/title_text.dart';
-
 class WelcomeView extends StatefulWidget {
   WelcomeView({Key key}) : super(key: key);
   @override
@@ -18,19 +16,23 @@ class _WelcomeViewState extends State<WelcomeView>{
   @override
   Widget _body(BuildContext context){
     return SafeArea(
+        left: true,right: true,
         child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 40,vertical: 60),
+            padding: EdgeInsets.symmetric(vertical: 150),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
                   width: MediaQuery.of(context).size.width - 80,
                   height: 120,
-                  child: Image.asset('assets/images/icon-480.png'),
+                  child: Image.asset('assets/images/icon.png'),
                 ),
                 TitleText(
                   'Welcome to KStar',
                   fontSize: 35
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Text(
                     'KSTAR Description',
@@ -42,8 +44,8 @@ class _WelcomeViewState extends State<WelcomeView>{
                 Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(vertical: 15),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                  child: ButtonBar(
+                    mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                        _signUpButton(),
                       SizedBox(

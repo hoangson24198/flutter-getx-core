@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:icomax/ui/views/welcome/welcome_view.dart';
+import 'file:///D:/icomax/lib/ui/views/welcome_view.dart';
 
 import '../core/bindings/home_bindings.dart';
 import '../core/bindings/login_bindings.dart';
