@@ -34,15 +34,15 @@ class HomeView extends StatelessWidget {
                     child:
                         Text('Here are all your posts', style: subHeaderStyle),
                   ),
-                  UIHelper.verticalSpaceSmall(),
-                  Expanded(child: getPostsUi(model.posts)),
+                  UIHelper.verticalSpaceSmall()
+                  //Expanded(child: getPostsUi(model.posts)),
                 ],
               ),
       ),
     );
   }
 
-  Widget getPostsUi(List<Post> posts) => ListView.builder(
+  /*Widget getPostsUi(List<Post> posts) => ListView.builder(
         itemCount: posts.length,
         itemBuilder: (context, index) => PostListItem(
           post: posts[index],
@@ -50,5 +50,5 @@ class HomeView extends StatelessWidget {
             Get.toNamed(SkyArt.Router.postViewRoute, arguments: posts[index]);
           },
         ),
-      );
+      );*/
 }

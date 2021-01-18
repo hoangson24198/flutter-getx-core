@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:icomax/ui/views/sign_up/sign_up_view.dart';
 import 'file:///D:/icomax/lib/ui/views/welcome_view.dart';
 
 import '../core/bindings/home_bindings.dart';
@@ -12,6 +13,7 @@ class Router {
   static const String welcomeRoute = '/';
   static const String homeViewRoute = '/home';
   static const String loginViewRoute = '/login';
+  static const String signUpViewRoute = '/signup';
   static const String postViewRoute = '/post';
   static const String testViewRoute = '/test';
 
@@ -29,6 +31,10 @@ class Router {
       name: loginViewRoute,
       page: () => LoginView(),
       binding: LoginBindings(),
+    ),
+    GetPage(
+      name: signUpViewRoute,
+      page: () => SignUpView()
     ),
     GetPage(
       name: testViewRoute,

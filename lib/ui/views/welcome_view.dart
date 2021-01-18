@@ -2,8 +2,12 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:icomax/helpers/theme.dart';
+import 'package:icomax/ui/views/sign_up/sign_up_view.dart';
+
+import '../router.dart';
 
 class WelcomeView extends StatefulWidget {
   WelcomeView({Key key}) : super(key: key);
@@ -69,7 +73,9 @@ class _WelcomeViewState extends State<WelcomeView>{
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
               color: AppColor.gray50,
               onPressed: () {
-                  log("HSSignUp");
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) =>
+                    SignUpView()));
               },
               padding: EdgeInsets.symmetric(horizontal: 30,vertical: 10) ,
               child: TitleText('Sign Up', color: AppColor.white)
@@ -92,6 +98,7 @@ class _WelcomeViewState extends State<WelcomeView>{
     );
   }
   Widget build(BuildContext context) {
+      SystemChrome.setEnabledSystemUIOverlays ([]);
       return Scaffold(
         key: _scaffoldKey,
         body: _body(context),

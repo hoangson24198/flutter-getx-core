@@ -49,3 +49,23 @@ class TitleText extends StatelessWidget {
     );
   }
 }
+
+final baseTextStyle = const TextStyle(
+    color: Colors.white,
+    fontFamily: 'arial'
+
+);
+final bigHeaderTextStyle = baseTextStyle.copyWith(
+  fontSize: 25.0,
+  fontWeight: FontWeight.w400,
+);
+
+final descTextStyle = baseTextStyle.copyWith(
+  fontSize: 18.0,
+  fontWeight: FontWeight.w400,
+);
+
+final footerTextStyle = baseTextStyle.copyWith(
+  fontSize: 16.0,
+  fontWeight: FontWeight.w400,
+);
