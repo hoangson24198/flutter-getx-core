@@ -18,6 +18,8 @@ class AppColor {
   static final Color gray = Color.fromRGBO(101, 119, 133, 1.0);
   static final Color ceriseRed = Color.fromRGBO(224, 36, 94, 1.0);
   static final Color gray50 = Color.fromRGBO(101, 118, 133, 0.5);
+  static final Color backgroundColor = Color.fromARGB(255, 255, 241, 159);
+  static final Color commentColor = Color.fromARGB(255, 255, 246, 196);
 }
 class TitleText extends StatelessWidget {
   final String text;
@@ -69,3 +71,5 @@ final footerTextStyle = baseTextStyle.copyWith(
   fontSize: 16.0,
   fontWeight: FontWeight.w400,
 );
+const headerStyle = TextStyle(fontSize: 35, fontWeight: FontWeight.w900);
+const subHeaderStyle = TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500);
