@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:icomax/core/data/command.dart';
-import 'package:icomax/get_stacked.dart';
+import 'package:icomax/base/base_controllers.dart';
+import 'file:///D:/icomax/lib/data/command.dart';
 
-import '../services/authentication_service.dart';
+import '../core/services/authentication_service.dart';
 
 class LoginModel extends BaseGetController {
   final AuthenticationService _authenticationService =

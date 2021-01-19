@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'command.freezed.dart'; //tên file sẽ phát sinh ra code
+part '../data/command.freezed.dart'; //tên file sẽ phát sinh ra code
 
 @freezed
 abstract class Command with _$Command {

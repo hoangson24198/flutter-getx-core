@@ -3,11 +3,13 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:icomax/helpers/theme.dart';
+import 'package:icomax/ui/views/sign_in/sign_in_view.dart';
 import 'package:icomax/ui/views/sign_up/sign_up_view.dart';
 
-import '../router.dart';
+import '../../router.dart';
 
 class WelcomeView extends StatefulWidget {
   WelcomeView({Key key}) : super(key: key);
@@ -73,9 +75,7 @@ class _WelcomeViewState extends State<WelcomeView>{
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
               color: AppColor.gray50,
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) =>
-                    SignUpView()));
+                Get.to(SignUpView());
               },
               padding: EdgeInsets.symmetric(horizontal: 30,vertical: 10) ,
               child: TitleText('Sign Up', color: AppColor.white)
@@ -90,7 +90,7 @@ class _WelcomeViewState extends State<WelcomeView>{
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
           color: AppColor.dodgetBlue,
           onPressed: () {
-            log("HSSignIn");
+              Get.to(SignInView());
           },
           padding: EdgeInsets.symmetric(horizontal: 30,vertical: 10) ,
           child: TitleText('Sign In', color: AppColor.white)

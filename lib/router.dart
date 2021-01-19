@@ -4,8 +4,6 @@ import 'package:icomax/ui/views/sign_in/sign_in_view.dart';
 import 'package:icomax/ui/views/sign_up/sign_up_view.dart';
 import 'file:///D:/icomax/lib/ui/views/welcome_view.dart';
 
-import '../core/bindings/login_bindings.dart';
-
 class Router {
   static const String welcomeRoute = '/';
   static const String homeViewRoute = '/home';
@@ -18,8 +16,7 @@ class Router {
     GetPage(name: welcomeRoute, page: () => WelcomeView()),
     GetPage(
       name: signInViewRoute,
-      page: () => SignInView(),
-      binding: LoginBindings(),
+      page: () => SignInView()
     ),
     GetPage(name: signUpViewRoute, page: () => SignUpView()),
   ];

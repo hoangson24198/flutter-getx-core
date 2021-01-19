@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:icomax/get_stacked.dart';
+import 'base_controllers.dart';
 
 class IndexTrackingGetController extends BaseGetController {
   final RxInt _currentIndex = 0.obs;
