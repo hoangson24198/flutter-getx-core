@@ -25,7 +25,7 @@ class AppRepository {
       try{
         response = await _apiRequest.login(data);
       }catch(error, stacktrace){
-        Fimber.d(stacktrace.toString());
+        Fimber.d(error.toString());
       }
       return response;
   }

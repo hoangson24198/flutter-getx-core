@@ -18,8 +18,7 @@ class Router {
     ),
     GetPage(
       name: signInViewRoute,
-      page: () => SignInView(),
-      binding: LoginBinding()
+      page: () => SignInView()
     ),
     GetPage(
         name: signUpViewRoute,

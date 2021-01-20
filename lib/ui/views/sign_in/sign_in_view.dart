@@ -2,12 +2,16 @@ import 'package:fimber/fimber_base.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:icomax/base/app_constant.dart';
 import 'package:icomax/helpers/theme.dart';
 import 'package:icomax/ui/views/sign_up/sign_up_view.dart';
 import 'package:icomax/ui/widgets/customLoader.dart';
 import 'package:icomax/ui/widgets/customWidgets.dart';
+import 'package:icomax/viewmodels/login_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInView extends StatefulWidget {
   final VoidCallback loginCallback;
@@ -98,7 +102,7 @@ class _SignInView extends State<SignInView> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
         color: AppColor.dodgetBlue,
         onPressed: () {
-          Fimber.d("HSSignIn");
+          _login();
         },
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         child: TitleText('Login', color: Colors.white),
@@ -216,12 +220,34 @@ class _SignInView extends State<SignInView> {
     return Column(
       children: <Widget>[
         _entryFeild('ID', 'Enter id','Do you have ID?','Find ID', controller: _idController),
-        _entryFeild('Password', 'Enter password','Forgot password ?','Send reset',controller: _passwordController)
+        _entryFeild('Password', 'Enter password','Forgot password ?','Send reset',controller: _passwordController,isPassword : true)
       ],
     );
   }
 
+  void _login(){
+    var viewModel = LoginModel();
+    //loader.showLoader(context);
+    var isValid = validateCredentials(
+        _scaffoldKey, _idController.text, _passwordController.text);
+    if(isValid){
+      viewModel.login(_idController.text, _passwordController.text);
+    }else{
+      loader.hideLoader();
+    }
+  }
 
+  bool validateCredentials(
+      GlobalKey<ScaffoldState> _scaffoldKey, String id, String password) {
+    if (id == null || id.isEmpty) {
+      Fluttertoast.showToast(msg: "Please enter User ID",gravity: ToastGravity.BOTTOM,backgroundColor: AppColor.dodgetBlue, textColor: AppColor.white);
+      return false;
+    } else if (password == null || password.isEmpty) {
+      Fluttertoast.showToast(msg: "Please enter password",gravity: ToastGravity.BOTTOM,backgroundColor: AppColor.dodgetBlue, textColor: AppColor.white);
+      return false;
+    }
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {

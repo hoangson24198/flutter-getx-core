@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:icomax/data/network/model/response_user.dart';
 
 part '../data/command.freezed.dart'; //tên file sẽ phát sinh ra code
 

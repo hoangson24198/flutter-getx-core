@@ -1,19 +1,32 @@
-class ResponseBase<D>{
+import 'dart:convert';
+
+import 'package:fimber/fimber.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+class ResponseBase<T>{
   int _statusCode;
   String _message;
   bool _success;
-  D _data;
+  T _data;
 
   int get statusCode => _statusCode;
   String get message => _message;
   bool get success => _success;
-  D get data => _data;
+  T get data => _data;
+
+  setData(T data){
+    this._data = data;
+  }
+
+  checkSuccess(){
+    return (success && data!=null);
+  }
 
   ResponseBase({
     int statusCode,
     String message,
     bool success,
-    D data}){
+    T data}){
     _statusCode = statusCode;
     _message = message;
     _success = success;
@@ -24,14 +37,19 @@ class ResponseBase<D>{
     _statusCode = json["statusCode"];
     _message = json["message"];
     _success = json["success"];
-    _data = json["data"];
+    if(json["data"] != null){
+      _data = jsonDecode(json["data"].toString()) as T;
+      Fimber.d("${jsonDecode(json["data"].toString())}");
+    }else{
+      _data = null;
+    }
   }
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
     map["success"] = _success;
     if (_data != null) {
-      map["data"] = _data;
+      map["data"] = jsonEncode(_data);
     }
     return map;
   }
