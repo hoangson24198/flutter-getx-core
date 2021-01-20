@@ -92,9 +92,8 @@ class _SignInView extends State<SignInView> {
 
   Widget _emailLoginButton(BuildContext context) {
     return Container(
-      width: fullWidth(context),
+      width: fullWidth(context) / 4,
       margin: EdgeInsets.symmetric(vertical: 30),
-      alignment: Alignment.center,
       child: FlatButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
         color: AppColor.dodgetBlue,
@@ -221,6 +220,8 @@ class _SignInView extends State<SignInView> {
       ],
     );
   }
+
+
 
   @override
   Widget build(BuildContext context) {

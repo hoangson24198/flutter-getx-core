@@ -1,6 +1,6 @@
 
-import 'package:dio/dio.dart';
-import 'package:icomax/domain/model/User.dart';
+
+import 'package:icomax/data/network/model/local_user.dart';
 
 abstract class LocalRepositoryInterface {
   Future<void> saveToken(String token);

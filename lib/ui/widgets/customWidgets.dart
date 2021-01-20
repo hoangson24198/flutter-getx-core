@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 double fullWidth(BuildContext context) {
   // cprint(MediaQuery.of(context).size.width.toString());
@@ -7,4 +8,22 @@ double fullWidth(BuildContext context) {
 
 double fullHeight(BuildContext context) {
   return MediaQuery.of(context).size.height;
+}
+
+void customSnackBar(GlobalKey<ScaffoldState> _scaffoldKey, String msg,
+    {double height = 30, Color backgroundColor = Colors.black}) {
+  if (_scaffoldKey == null || _scaffoldKey.currentState == null) {
+    return;
+  }
+  _scaffoldKey.currentState.hideCurrentSnackBar();
+  final snackBar = SnackBar(
+    backgroundColor: backgroundColor,
+    content: Text(
+      msg,
+      style: TextStyle(
+        color: Colors.white,
+      ),
+    ),
+  );
+  _scaffoldKey.currentState.showSnackBar(snackBar);
 }

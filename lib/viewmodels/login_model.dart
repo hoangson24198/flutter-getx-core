@@ -1,50 +1,20 @@
 import 'package:get/get.dart';
 import 'package:icomax/base/base_controllers.dart';
+import 'package:icomax/base/response_base.dart';
 import 'file:///D:/icomax/lib/data/command.dart';
-
-import '../core/services/authentication_service.dart';
+import 'package:icomax/data/network/api_client.dart';
+import 'package:icomax/data/network/app_repository.dart';
+import 'package:icomax/data/network/model/response_user.dart';
 
 class LoginModel extends BaseGetController {
-  final AuthenticationService _authenticationService =
-      Get.find<AuthenticationService>();
+  final AppRepository _authenticationService =
+      Get.find<AppRepository>();
 
   String errorMessage;
   Rx<Command> command;
 
-  //data dựa theo command
-  //loading
-  var button = "Login".obs;
-
-  loginTet(String userId) {
-    command.value = Command.loading("loading");
-    command.value = Command.error("loi ne");
-  }
-
-  Future<bool> login(String userIdText) async {
-    //setViewState(ViewState.Busy);
-
-    var userId = int.tryParse(userIdText);
-
-    // Not a number
-    if (userId == null) {
-      errorMessage = 'Value entered is not a number';
-//      setViewState(ViewState.Idle);
-      return false;
-    }
-
-    //command = Command.error("loi ne");
-    var success = await runBusyFuture(_authenticationService.login(userId));
-
-    // Handle potential error here too.
-
-    if (success) {
-      button.value = "loadding ok";
-      command.value = Command.loading("loading nè");
-    } else {
-      command.value = Command.error("loi ne");
-    }
-
-//    setViewState(ViewState.Idle);
-    return success;
+  Future<ResponseBase<ResponseUser>> login(String username, String password) async {
+    var result = await runBusyFuture(_authenticationService.login(username,password));
+    return result;
   }
 }
