@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:icomax/bindings/login_binding.dart';
 import 'package:icomax/ui/views/sign_in/sign_in_view.dart';
 import 'package:icomax/ui/views/sign_up/sign_up_view.dart';
-import 'file:///D:/icomax/lib/ui/views/welcome_view.dart';
+import 'ui/views/welcome_view.dart';
 
 class Router {
   static const String welcomeRoute = '/';

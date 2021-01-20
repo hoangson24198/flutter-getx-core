@@ -1,7 +1,7 @@
 import 'package:gson/gson.dart';
 import 'package:icomax/base/app_constant.dart';
+import 'package:icomax/data/local/local_repository_interface.dart';
 import 'package:icomax/data/network/model/local_user.dart';
-import 'file:///D:/icomax/lib/data/local/local_repository_interface.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalRepositoryImpl implements LocalRepositoryInterface {
