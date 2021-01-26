@@ -14,7 +14,7 @@ class LoginModel extends BaseGetController {
       Get.find<AppRepository>();
 
   String errorMessage;
-  Rx<Command> command;
+  Rx<Command> command = Command.loading("message").obs;
 
   Future<ResponseUser> login(String username, String password) async {
     try{
