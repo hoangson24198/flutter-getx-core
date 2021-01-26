@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:fimber/fimber.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -33,13 +34,12 @@ class ResponseBase<T>{
     _data = data;
   }
 
-  ResponseBase.fromJson(dynamic json) {
+  ResponseBase.fromJson(Map<String,dynamic> json) {
     _statusCode = json["statusCode"];
     _message = json["message"];
     _success = json["success"];
     if(json["data"] != null){
       _data = jsonDecode(json["data"].toString()) as T;
-      Fimber.d("${jsonDecode(json["data"].toString())}");
     }else{
       _data = null;
     }

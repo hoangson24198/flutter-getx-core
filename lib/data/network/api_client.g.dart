@@ -23,7 +23,6 @@ class _ApiClient implements ApiClient {
                   'Content-type': 'application/json-patch+json;charset=UTF-8'
                 },
                 extra: _extra,
-                responseType: ResponseType.json,
                 baseUrl: baseUrl),
             data: data);
     final value = ResponseBase<ResponseUser>.fromJson(_result.data);

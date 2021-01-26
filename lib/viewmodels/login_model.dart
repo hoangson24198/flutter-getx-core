@@ -29,6 +29,7 @@ class LoginModel extends BaseGetController {
         Fimber.d("Login fail ${result.toJson()}");
       }
     }catch(error) {
+        Fimber.d("Login fail ${error.toString()}");
         return null;
     }
   }

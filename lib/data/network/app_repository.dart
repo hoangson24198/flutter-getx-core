@@ -16,17 +16,11 @@ class AppRepository {
     dio = CustomDio().instance;
     _apiRequest = ApiClient(dio);
   }
-  Future<ResponseBase<ResponseUser>> login(String username, String password) async{
-      ResponseBase<ResponseUser> response;
-      Map<String,dynamic> data = {
-        'username': username,
-        'password' : password
-      };
-      try{
-        response = await _apiRequest.login(data);
-      }catch(error, stacktrace){
-        Fimber.d(error.toString());
-      }
-      return response;
+  Future<ResponseBase<ResponseUser>> login(String username, String password) {
+      Fimber.d("Login Repository");
+      return _apiRequest.login({
+        "username" : username,
+        "password" : password
+      });
   }
 }
