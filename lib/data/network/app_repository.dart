@@ -16,7 +16,7 @@ class AppRepository {
     dio = CustomDio().instance;
     _apiRequest = ApiClient(dio);
   }
-  Future<ResponseBase<ResponseUser>> login(String username, String password) {
+  Future<ResponseUser> login(String username, String password) {
       Fimber.d("Login Repository");
       return _apiRequest.login({
         "username" : username,

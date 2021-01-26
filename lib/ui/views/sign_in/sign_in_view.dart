@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:icomax/base/app_constant.dart';
+import 'package:icomax/data/command.dart';
 import 'package:icomax/helpers/theme.dart';
 import 'package:icomax/ui/views/sign_up/sign_up_view.dart';
 import 'package:icomax/ui/widgets/customLoader.dart';
@@ -45,32 +46,35 @@ class _SignInView extends State<SignInView> {
 
   Widget _body(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    return Container(
-      height: height,
-      child: Stack(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(height: height * .15),
-                  _title(),
-                  SizedBox(height: 50),
-                  _emailPasswordWidget(),
-                  _emailLoginButton(context),
-                  SizedBox(height: height * .055),
-                  _createAccountLabel(),
-                ],
+    return GetBuilder<LoginModel>(
+        init: LoginModel(),
+        builder: (model) => Container(
+          height: height,
+          child: Stack(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(height: height * .15),
+                      _title(),
+                      SizedBox(height: 50),
+                      _emailPasswordWidget(),
+                      model.isBusy ? loader.buildLoader(context)
+                      : _emailLoginButton(context,model),
+                      SizedBox(height: height * .055),
+                      _createAccountLabel(),
+                    ],
+                  ),
+                ),
               ),
-            ),
+              Positioned(top: 40, left: 10, child: _backButton())
+            ],
           ),
-          Positioned(top: 40, left: 10, child: _backButton()),
-        ],
-      ),
-    );
+        ));
   }
 
   Widget _backButton() {
@@ -94,15 +98,34 @@ class _SignInView extends State<SignInView> {
     );
   }
 
-  Widget _emailLoginButton(BuildContext context) {
+  Widget _emailLoginButton(BuildContext context,LoginModel viewModel) {
     return Container(
       width: fullWidth(context) / 4,
       margin: EdgeInsets.symmetric(vertical: 30),
       child: FlatButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
         color: AppColor.dodgetBlue,
-        onPressed: () {
-          _login();
+        onPressed: () async {
+          SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+          var isValid = validateCredentials(
+              _scaffoldKey, _idController.text, _passwordController.text);
+          if(isValid){
+            viewModel.login(_idController.text, _passwordController.text);
+          }
+          viewModel.command.value.when(
+              loading:(message) {
+                  loader.buildLoader(context);
+              },
+              error: (message) {
+                loader.hideLoader();
+              },
+              success: (result) {
+                loader.hideLoader();
+                Fimber.d("Login Success");
+                Fluttertoast.showToast(msg: "Login Success",gravity: ToastGravity.BOTTOM,backgroundColor: AppColor.dodgetBlue, textColor: AppColor.white);
+                sharedPreferences.setString(SharedPreferenceKey.pref_token, result.token);
+                sharedPreferences.setString(SharedPreferenceKey.pref_user, result.userInfo);
+              });
         },
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         child: TitleText('Login', color: Colors.white),
@@ -223,18 +246,6 @@ class _SignInView extends State<SignInView> {
         _entryFeild('Password', 'Enter password','Forgot password ?','Send reset',controller: _passwordController,isPassword : true)
       ],
     );
-  }
-
-  void _login(){
-    var viewModel = LoginModel();
-    //loader.showLoader(context);
-    var isValid = validateCredentials(
-        _scaffoldKey, _idController.text, _passwordController.text);
-    if(isValid){
-      viewModel.login(_idController.text, _passwordController.text);
-    }else{
-      loader.hideLoader();
-    }
   }
 
   bool validateCredentials(

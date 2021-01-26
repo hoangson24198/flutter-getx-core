@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of '../data/command.dart';
+part of 'command.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -26,6 +26,13 @@ class _$CommandTearOff {
       message,
     );
   }
+
+// ignore: unused_element
+  Success success(ResponseUser data) {
+    return Success(
+      data,
+    );
+  }
 }
 
 /// @nodoc
@@ -34,39 +41,38 @@ const $Command = _$CommandTearOff();
 
 /// @nodoc
 mixin _$Command {
-  String get message;
-
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult loading(String message),
     @required TResult error(String message),
+    @required TResult success(ResponseUser data),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult loading(String message),
     TResult error(String message),
+    TResult success(ResponseUser data),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult loading(Loading value),
     @required TResult error(Error value),
+    @required TResult success(Success value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult loading(Loading value),
     TResult error(Error value),
+    TResult success(Success value),
     @required TResult orElse(),
   });
-
-  $CommandCopyWith<Command> get copyWith;
 }
 
 /// @nodoc
 abstract class $CommandCopyWith<$Res> {
   factory $CommandCopyWith(Command value, $Res Function(Command) then) =
       _$CommandCopyWithImpl<$Res>;
-  $Res call({String message});
 }
 
 /// @nodoc
@@ -76,22 +82,12 @@ class _$CommandCopyWithImpl<$Res> implements $CommandCopyWith<$Res> {
   final Command _value;
   // ignore: unused_field
   final $Res Function(Command) _then;
-
-  @override
-  $Res call({
-    Object message = freezed,
-  }) {
-    return _then(_value.copyWith(
-      message: message == freezed ? _value.message : message as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class $LoadingCopyWith<$Res> implements $CommandCopyWith<$Res> {
+abstract class $LoadingCopyWith<$Res> {
   factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
       _$LoadingCopyWithImpl<$Res>;
-  @override
   $Res call({String message});
 }
 
@@ -146,6 +142,7 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
 
+  @JsonKey(ignore: true)
   @override
   $LoadingCopyWith<Loading> get copyWith =>
       _$LoadingCopyWithImpl<Loading>(this, _$identity);
@@ -155,9 +152,11 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   TResult when<TResult extends Object>({
     @required TResult loading(String message),
     @required TResult error(String message),
+    @required TResult success(ResponseUser data),
   }) {
     assert(loading != null);
     assert(error != null);
+    assert(success != null);
     return loading(message);
   }
 
@@ -166,6 +165,7 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   TResult maybeWhen<TResult extends Object>({
     TResult loading(String message),
     TResult error(String message),
+    TResult success(ResponseUser data),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -180,9 +180,11 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   TResult map<TResult extends Object>({
     @required TResult loading(Loading value),
     @required TResult error(Error value),
+    @required TResult success(Success value),
   }) {
     assert(loading != null);
     assert(error != null);
+    assert(success != null);
     return loading(this);
   }
 
@@ -191,6 +193,7 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
   TResult maybeMap<TResult extends Object>({
     TResult loading(Loading value),
     TResult error(Error value),
+    TResult success(Success value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -204,17 +207,15 @@ class _$Loading with DiagnosticableTreeMixin implements Loading {
 abstract class Loading implements Command {
   const factory Loading(String message) = _$Loading;
 
-  @override
   String get message;
-  @override
+  @JsonKey(ignore: true)
   $LoadingCopyWith<Loading> get copyWith;
 }
 
 /// @nodoc
-abstract class $ErrorCopyWith<$Res> implements $CommandCopyWith<$Res> {
+abstract class $ErrorCopyWith<$Res> {
   factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
       _$ErrorCopyWithImpl<$Res>;
-  @override
   $Res call({String message});
 }
 
@@ -269,6 +270,7 @@ class _$Error with DiagnosticableTreeMixin implements Error {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
 
+  @JsonKey(ignore: true)
   @override
   $ErrorCopyWith<Error> get copyWith =>
       _$ErrorCopyWithImpl<Error>(this, _$identity);
@@ -278,9 +280,11 @@ class _$Error with DiagnosticableTreeMixin implements Error {
   TResult when<TResult extends Object>({
     @required TResult loading(String message),
     @required TResult error(String message),
+    @required TResult success(ResponseUser data),
   }) {
     assert(loading != null);
     assert(error != null);
+    assert(success != null);
     return error(message);
   }
 
@@ -289,6 +293,7 @@ class _$Error with DiagnosticableTreeMixin implements Error {
   TResult maybeWhen<TResult extends Object>({
     TResult loading(String message),
     TResult error(String message),
+    TResult success(ResponseUser data),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -303,9 +308,11 @@ class _$Error with DiagnosticableTreeMixin implements Error {
   TResult map<TResult extends Object>({
     @required TResult loading(Loading value),
     @required TResult error(Error value),
+    @required TResult success(Success value),
   }) {
     assert(loading != null);
     assert(error != null);
+    assert(success != null);
     return error(this);
   }
 
@@ -314,6 +321,7 @@ class _$Error with DiagnosticableTreeMixin implements Error {
   TResult maybeMap<TResult extends Object>({
     TResult loading(Loading value),
     TResult error(Error value),
+    TResult success(Success value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -327,8 +335,135 @@ class _$Error with DiagnosticableTreeMixin implements Error {
 abstract class Error implements Command {
   const factory Error(String message) = _$Error;
 
-  @override
   String get message;
-  @override
+  @JsonKey(ignore: true)
   $ErrorCopyWith<Error> get copyWith;
+}
+
+/// @nodoc
+abstract class $SuccessCopyWith<$Res> {
+  factory $SuccessCopyWith(Success value, $Res Function(Success) then) =
+      _$SuccessCopyWithImpl<$Res>;
+  $Res call({ResponseUser data});
+}
+
+/// @nodoc
+class _$SuccessCopyWithImpl<$Res> extends _$CommandCopyWithImpl<$Res>
+    implements $SuccessCopyWith<$Res> {
+  _$SuccessCopyWithImpl(Success _value, $Res Function(Success) _then)
+      : super(_value, (v) => _then(v as Success));
+
+  @override
+  Success get _value => super._value as Success;
+
+  @override
+  $Res call({
+    Object data = freezed,
+  }) {
+    return _then(Success(
+      data == freezed ? _value.data : data as ResponseUser,
+    ));
+  }
+}
+
+/// @nodoc
+class _$Success with DiagnosticableTreeMixin implements Success {
+  const _$Success(this.data) : assert(data != null);
+
+  @override
+  final ResponseUser data;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Command.success(data: $data)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Command.success'))
+      ..add(DiagnosticsProperty('data', data));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Success &&
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
+
+  @JsonKey(ignore: true)
+  @override
+  $SuccessCopyWith<Success> get copyWith =>
+      _$SuccessCopyWithImpl<Success>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult loading(String message),
+    @required TResult error(String message),
+    @required TResult success(ResponseUser data),
+  }) {
+    assert(loading != null);
+    assert(error != null);
+    assert(success != null);
+    return success(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult loading(String message),
+    TResult error(String message),
+    TResult success(ResponseUser data),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (success != null) {
+      return success(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult loading(Loading value),
+    @required TResult error(Error value),
+    @required TResult success(Success value),
+  }) {
+    assert(loading != null);
+    assert(error != null);
+    assert(success != null);
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult loading(Loading value),
+    TResult error(Error value),
+    TResult success(Success value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Success implements Command {
+  const factory Success(ResponseUser data) = _$Success;
+
+  ResponseUser get data;
+  @JsonKey(ignore: true)
+  $SuccessCopyWith<Success> get copyWith;
 }

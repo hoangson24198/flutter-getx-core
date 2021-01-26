@@ -16,21 +16,17 @@ class LoginModel extends BaseGetController {
   String errorMessage;
   Rx<Command> command;
 
-  Future<ResponseBase<ResponseUser>> login(String username, String password) async {
+  Future<ResponseUser> login(String username, String password) async {
     try{
-      var result = await _authenticationService.login(username,password);
-      Fimber.d("Login Success ${result}");
-      if(result.checkSuccess()){
-        SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-        sharedPreferences.setString(SharedPreferenceKey.pref_token, result.data.token);
-        sharedPreferences.setString(SharedPreferenceKey.pref_user, result.data.userInfo);
-        return result;
-      }else{
-        Fimber.d("Login fail ${result.toJson()}");
-      }
+         var result = await runBusyFuture(_authenticationService.login(username,password));
+        if(result.success){
+          command.value = Command.success(result);
+        }else{
+          command.value = Command.error(result.message);
+        }
     }catch(error) {
-        Fimber.d("Login fail ${error.toString()}");
-        return null;
+        Fimber.d(error.toString());
+        //command.value = Command.error(error.toString());
     }
   }
 }

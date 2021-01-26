@@ -24,7 +24,6 @@ abstract class ApiClient{
     return ApiClient(dio);
   }
 
-
-  @POST("Auth/Login")
-  Future<ResponseBase<ResponseUser>> login(@Body() Map<String,dynamic> data);
+  @POST("/Auth/Login")
+  Future<ResponseUser> login(@Body() Map<String,dynamic> data);
 }

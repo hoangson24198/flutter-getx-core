@@ -1,31 +1,37 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 part of 'api_client.dart';
+
+// **************************************************************************
+// RetrofitGenerator
+// **************************************************************************
 
 class _ApiClient implements ApiClient {
   _ApiClient(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
-    baseUrl ??= Apis.base_url;
+    baseUrl ??= 'http://115.78.1.222:24481/api';
   }
 
   final Dio _dio;
+
   String baseUrl;
 
   @override
-  Future<ResponseBase<ResponseUser>> login(Map<String, dynamic> data) async {
+  Future<ResponseUser> login(data) async {
+    ArgumentError.checkNotNull(data, 'data');
     const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final Response<Map<String, dynamic>> _result =
-        await _dio.request('/Auth/Login',
-            queryParameters: _data,
-            options: RequestOptions(
-                method: 'POST',
-                headers: <String, dynamic>{
-                  'Accept': 'application/json',
-                  'Content-type': 'application/json-patch+json;charset=UTF-8'
-                },
-                extra: _extra,
-                baseUrl: baseUrl),
-            data: data);
-    final value = ResponseBase<ResponseUser>.fromJson(_result.data);
+    _data.addAll(data ?? <String, dynamic>{});
+    final _result = await _dio.request<Map<String, dynamic>>('/Auth/Login',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = ResponseUser.fromJson(_result.data);
     return value;
   }
 }
