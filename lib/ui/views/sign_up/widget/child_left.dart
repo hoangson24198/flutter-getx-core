@@ -13,15 +13,11 @@ class _SignUpChildLeft extends State<SignUpChildLeft>{
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   Widget _backButton() {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 30,vertical: 40),
-      child: FlatButton(
-          onPressed: () {
-            Get.back();
-          },
-          child: Image.asset("assets/images/icon_back.png")
-      ),
-    );
+    return IconButton(
+        icon: Image.asset("assets/images/icon_back.png"),
+        onPressed: () {
+          Get.back();
+        });
   }
 
   Widget _body(BuildContext context){
@@ -30,7 +26,7 @@ class _SignUpChildLeft extends State<SignUpChildLeft>{
         children: <Widget>[
           _backgroundImage(),
           _contentLeft(),
-          Positioned(top: 10, left: 10, child: _backButton()),
+          Positioned(top: 20, left: 20, child: _backButton()),
         ],
       ),
     );

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:icomax/data/command.dart';
 
 /// Contains ViewModel functionality for busy state management
 class BaseGetController extends GetxController {

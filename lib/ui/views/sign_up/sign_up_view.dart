@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:icomax/helpers/theme.dart';
+import 'package:get/get.dart';
 import 'package:icomax/ui/views/sign_up/widget/child_left.dart';
 import 'package:icomax/ui/views/sign_up/widget/child_right.dart';
 import 'package:icomax/ui/views/sign_up/widget/split_horizon_widget.dart';
-import 'package:icomax/ui/views/welcome_view.dart';
 
 class SignUpView extends StatefulWidget {
   //final VoidCallback loginCallback;
@@ -14,6 +13,7 @@ class SignUpView extends StatefulWidget {
   _SignUpView createState() => _SignUpView();
 }
 class _SignUpView extends State<SignUpView>{
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays ([]);

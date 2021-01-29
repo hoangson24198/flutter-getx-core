@@ -28,7 +28,7 @@ class _$CommandTearOff {
   }
 
 // ignore: unused_element
-  Success success(ResponseUser data) {
+  Success success([ResponseUser data]) {
     return Success(
       data,
     );
@@ -368,7 +368,7 @@ class _$SuccessCopyWithImpl<$Res> extends _$CommandCopyWithImpl<$Res>
 
 /// @nodoc
 class _$Success with DiagnosticableTreeMixin implements Success {
-  const _$Success(this.data) : assert(data != null);
+  const _$Success([this.data]);
 
   @override
   final ResponseUser data;
@@ -461,7 +461,7 @@ class _$Success with DiagnosticableTreeMixin implements Success {
 }
 
 abstract class Success implements Command {
-  const factory Success(ResponseUser data) = _$Success;
+  const factory Success([ResponseUser data]) = _$Success;
 
   ResponseUser get data;
   @JsonKey(ignore: true)
