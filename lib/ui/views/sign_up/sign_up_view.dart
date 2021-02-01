@@ -19,8 +19,8 @@ class _SignUpView extends State<SignUpView>{
     SystemChrome.setEnabledSystemUIOverlays ([]);
     return SafeArea(
         child:  SplitWidget(
-            childFirst: SignUpChildLeft(),
-            childSecond: SignUpChildRight()
+            childFirst: SignUpChildLeftFirst(),
+            childSecond: SignUpChildRightFirst()
         ));
   }
 }

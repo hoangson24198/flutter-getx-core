@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icomax/helpers/theme.dart';
 
-class SignUpChildLeft extends StatefulWidget {
-  const SignUpChildLeft({Key key}) : super(key: key);
+class SignUpChildLeftFirst extends StatefulWidget {
+  const SignUpChildLeftFirst({Key key}) : super(key: key);
 
   @override
-  _SignUpChildLeft createState() => _SignUpChildLeft();
+  _SignUpChildLeftFirst createState() => _SignUpChildLeftFirst();
 }
-class _SignUpChildLeft extends State<SignUpChildLeft>{
+class _SignUpChildLeftFirst extends State<SignUpChildLeftFirst>{
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   Widget _backButton() {
@@ -51,11 +51,11 @@ class _contentLeft extends StatelessWidget{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Text("Why KSTAR?",
-              style: bigHeaderTextStyle),
+              style: textStyle25),
           new Text("Kstar description",
-              style: descTextStyle),
+              style: textStyle18),
           new Text("Kstar footer",
-              style: descTextStyle),
+              style: textStyle18),
           //new Container()
         ],
       ),

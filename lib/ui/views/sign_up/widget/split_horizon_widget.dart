@@ -14,7 +14,7 @@ class SplitWidget extends StatefulWidget{
 class _SplitWidget extends State<SplitWidget> {
   @override
   Widget build(BuildContext context) => OrientationBuilder(builder: (context,orientation){
-      return (orientation == Orientation.portrait) ? null : SplitHorizontalWidget(
+      return (orientation == Orientation.portrait) ? SplitVerticalWidget(childTop: widget.childSecond) : SplitHorizontalWidget(
         childLeft: widget.childFirst,
         childRight: widget.childSecond
       );
@@ -59,5 +59,24 @@ class _SplitHorizontalWidget extends State<SplitHorizontalWidget>{
         height: heightScreen,
       )
     ]);
+  }
+}
+
+class SplitVerticalWidget extends StatefulWidget {
+  SplitVerticalWidget({Key key, this.childTop})
+      : super(key: key);
+  final Widget childTop;
+
+  @override
+  _SplitVerticalWidget createState() => _SplitVerticalWidget();
+}
+
+class _SplitVerticalWidget extends State<SplitVerticalWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: widget.key,
+      body: widget.childTop
+    );
   }
 }

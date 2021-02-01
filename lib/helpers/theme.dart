@@ -57,17 +57,17 @@ final baseTextStyle = const TextStyle(
     fontFamily: 'arial'
 
 );
-final bigHeaderTextStyle = baseTextStyle.copyWith(
+final textStyle25 = baseTextStyle.copyWith(
   fontSize: 25.0,
   fontWeight: FontWeight.w400,
 );
 
-final descTextStyle = baseTextStyle.copyWith(
+final textStyle18 = baseTextStyle.copyWith(
   fontSize: 18.0,
   fontWeight: FontWeight.w400,
 );
 
-final footerTextStyle = baseTextStyle.copyWith(
+final textStyle16 = baseTextStyle.copyWith(
   fontSize: 16.0,
   fontWeight: FontWeight.w400,
 );
