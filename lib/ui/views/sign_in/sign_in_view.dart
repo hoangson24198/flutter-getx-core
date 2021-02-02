@@ -9,8 +9,8 @@ import 'package:icomax/base/app_constant.dart';
 import 'package:icomax/data/command.dart';
 import 'package:icomax/helpers/theme.dart';
 import 'package:icomax/ui/views/sign_up/sign_up_view.dart';
-import 'package:icomax/ui/widgets/customLoader.dart';
-import 'package:icomax/ui/widgets/customWidgets.dart';
+import 'package:icomax/ui/widgets/custom_loader.dart';
+import 'package:icomax/ui/widgets/custom_widgets.dart';
 import 'package:icomax/viewmodels/login_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,14 +26,12 @@ class SignInView extends StatefulWidget {
 class _SignInView extends State<SignInView> {
   TextEditingController _idController;
   TextEditingController _passwordController;
-  CustomLoader loader;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     _idController = TextEditingController();
     _passwordController = TextEditingController();
-    loader = CustomLoader();
     super.initState();
   }
 
@@ -63,8 +61,8 @@ class _SignInView extends State<SignInView> {
                       _title(),
                       SizedBox(height: 50),
                       _emailPasswordWidget(),
-                      model.isBusy ? loader.buildLoader(context)
-                      : _emailLoginButton(context,model),
+                      model.isBusy ? CustomLoader().buildLoader(context)
+                          : _emailLoginButton(context,model),
                       SizedBox(height: height * .055),
                       _createAccountLabel(),
                     ],
@@ -106,26 +104,11 @@ class _SignInView extends State<SignInView> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
         color: AppColor.dodgetBlue,
         onPressed: () async {
-          SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
           var isValid = validateCredentials(
               _scaffoldKey, _idController.text, _passwordController.text);
           if(isValid){
             viewModel.login(_idController.text, _passwordController.text);
           }
-          viewModel.command.value.when(
-              loading:(message) {
-                  loader.buildLoader(context);
-              },
-              error: (message) {
-                loader.hideLoader();
-              },
-              success: (result) {
-                loader.hideLoader();
-                Fimber.d("Login Success");
-                Fluttertoast.showToast(msg: "Login Success",gravity: ToastGravity.BOTTOM,backgroundColor: AppColor.dodgetBlue, textColor: AppColor.white);
-                sharedPreferences.setString(SharedPreferenceKey.pref_token, result.token);
-                sharedPreferences.setString(SharedPreferenceKey.pref_user, result.userInfo);
-              });
         },
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         child: TitleText('Login', color: Colors.white),
@@ -263,7 +246,9 @@ class _SignInView extends State<SignInView> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
-    return Scaffold(key: _scaffoldKey, body: _body(context));
+    return Scaffold(
+        key: _scaffoldKey,
+        body: _body(context));
   }
 }
 class _title extends StatelessWidget {

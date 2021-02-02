@@ -3,15 +3,21 @@ import 'package:get/get.dart';
 import 'package:icomax/bindings/login_binding.dart';
 import 'package:icomax/ui/views/sign_in/sign_in_view.dart';
 import 'package:icomax/ui/views/sign_up/sign_up_view.dart';
+import 'package:icomax/ui/views/splash_view.dart';
 import 'ui/views/welcome_view.dart';
 
 class Router {
-  static const String welcomeRoute = '/';
+  static const String splashRoute = '/';
+  static const String welcomeRoute = '/welcome';
   static const String homeViewRoute = '/home';
   static const String signInViewRoute = '/signin';
   static const String signUpViewRoute = '/signup';
 
   static List<GetPage> namedRoutes = <GetPage>[
+    GetPage(
+        name: splashRoute,
+        page: () => SplashView()
+    ),
     GetPage(
         name: welcomeRoute,
         page: () => WelcomeView()

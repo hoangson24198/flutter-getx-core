@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:icomax/helpers/theme.dart';
-import 'package:icomax/ui/widgets/customWidgets.dart';
+import 'package:icomax/ui/widgets/custom_widgets.dart';
 import 'package:icomax/ui/widgets/custom_text.dart';
 
 class SignUpChildRightFirst extends StatefulWidget {

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:icomax/ui/widgets/customWidgets.dart';
+import 'package:icomax/ui/widgets/custom_widgets.dart';
 
 class CustomLoader {
   static CustomLoader _customLoader;

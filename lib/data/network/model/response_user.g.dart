@@ -7,16 +7,15 @@ part of 'response_user.dart';
 // **************************************************************************
 
 ResponseUser _$ResponseUserFromJson(Map<String, dynamic> json) {
-  return ResponseUser(
-    json['token'] as String,
-    json['userInfo'] as String,
-    json['refeshToken'] as String,
-    json['expiredTime'] as String,
-    json['logoutTime'] as int,
-  )
+  return ResponseUser()
     ..statusCode = json['statusCode'] as int
     ..message = json['message'] as String
-    ..success = json['success'] as bool;
+    ..success = json['success'] as bool
+    ..token = json['token'] as String
+    ..userInfo = json['userInfo'] as String
+    ..refeshToken = json['refeshToken'] as String
+    ..expiredTime = json['expiredTime'] as String
+    ..logoutTime = json['logoutTime'] as int;
 }
 
 Map<String, dynamic> _$ResponseUserToJson(ResponseUser instance) =>

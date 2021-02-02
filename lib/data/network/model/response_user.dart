@@ -10,7 +10,7 @@ class ResponseUser extends ResponseBase{
   String expiredTime;
   int logoutTime;
 
-  ResponseUser(this.token,this.userInfo,this.refeshToken,this.expiredTime,this.logoutTime);
+  ResponseUser();
 
   factory ResponseUser.fromJson(Map<String,dynamic> json) => _$ResponseUserFromJson(json);
 
