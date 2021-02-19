@@ -1,6 +1,4 @@
-# icomax
-
-icomax
+# Flutter getX core
 
 ## Getting Started
 
